@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Sexual Inclusiva</title>
+    <style>
+        /* Variables de colores de la bandera LGBT */
+        :root {
+            --rojo: #E40303;
+            --naranja: #FF8C00;
+            --amarillo: #FFED00;
+            --verde: #008026;
+            --azul: #004DFF;
+            --morado: #750787;
+            --blanco: #ffffff;
+            --negro: #333333;
+            --gris-claro: #f5f5f5;
+            --sombra: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-claro);
+            color: var(--negro);
+            line-height: 1.6;
+        }
+
+        /* Barra de navegación */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            background-color: var(--blanco);
+            box-shadow: 0 2px 4px var(--sombra);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            background: linear-gradient(to right, var(--rojo), var(--naranja), var(--amarillo), var(--verde), var(--azul), var(--morado));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--negro);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--azul);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--blanco);
+            background: linear-gradient(135deg, rgba(228, 3, 3, 0.85), rgba(255, 140, 0, 0.85), rgba(255, 237, 0, 0.85), rgba(0, 128, 38, 0.85), rgba(0, 77, 255, 0.85), rgba(117, 7, 135, 0.85)), url('/static/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 0 5%;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .cta-button {
+            padding: 0.8rem 2rem;
+            background-color: var(--blanco);
+            color: var(--azul);
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Rainbow Divider */
+        .rainbow-divider {
+            height: 4px;
+            background: linear-gradient(to right, var(--rojo), var(--naranja), var(--amarillo), var(--verde), var(--azul), var(--morado));
+            margin: 2rem 0;
+        }
+
+        /* Secciones principales */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--morado);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--azul);
+            margin: 0.5rem auto;
+        }
+
+        /* Cards de info */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background-color: var(--blanco);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--sombra);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .card:hover .card-img img {
+            transform: scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-content h3 {
+            color: var(--azul);
+            margin-bottom: 1rem;
+        }
+
+        .card-content p {
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: var(--morado);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        /* Sección LGBTIQ+ */
+        .lgbtq-section {
+            background: linear-gradient(45deg, rgba(228, 3, 3, 0.05), rgba(255, 140, 0, 0.05), rgba(255, 237, 0, 0.05), rgba(0, 128, 38, 0.05), rgba(0, 77, 255, 0.05), rgba(117, 7, 135, 0.05));
+            padding: 3rem 0;
+            border-radius: 10px;
+        }
+
+        .lgbtq-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .lgbtq-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .lgbtq-tabs {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--blanco);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px var(--sombra);
+        }
+
+        .tab-buttons {
+            display: flex;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--gris-claro);
+        }
+
+        .tab-button {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--negro);
+            transition: color 0.3s;
+        }
+
+        .tab-button.active {
+            color: var(--azul);
+            border-bottom: 2px solid var(--azul);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Sección Telesalud */
+        .telesalud-section {
+            background-color: var(--blanco);
+            padding: 3rem 0;
+            border-radius: 10px;
+            margin-top: 2rem;
+        }
+
+        .telesalud-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .telesalud-img {
+            flex: 1;
+            min-width: 300px;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .telesalud-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .telesalud-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .telesalud-steps {
+            margin-top: 1.5rem;
+        }
+
+        .step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .step-number {
+            background-color: var(--azul);
+            color: var(--blanco);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Recursos Sección */
+        .recursos-section {
+            padding: 3rem 0;
+        }
+
+        .recursos-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .recurso-card {
+            background-color: var(--blanco);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px var(--sombra);
+            transition: transform 0.3s;
+        }
+
+        .recurso-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .recurso-icon {
+            margin-bottom: 1rem;
+            color: var(--morado);
+            font-size: 2rem;
+        }
+
+        /* FAQ Sección */
+        .faq-section {
+            padding: 3rem 0;
+            background-color: var(--blanco);
+            border-radius: 10px;
+        }
+
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px var(--sombra);
+        }
+
+        .accordion-header {
+            background-color: var(--gris-claro);
+            padding: 1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .accordion-content {
+            padding: 0 1rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: var(--blanco);
+        }
+
+        .accordion-content.active {
+            padding: 1rem;
+            max-height: 500px;
+        }
+
+        /* Contacto Sección */
+        .contacto-section {
+            padding: 3rem 0;
+        }
+
+        .contacto-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--blanco);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--sombra);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--azul);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(to right, var(--azul), var(--morado));
+            color: var(--blanco);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: block;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--negro);
+            color: var(--blanco);
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            position: relative;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--rojo), var(--morado));
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--amarillo);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #444;
+            color: var(--blanco);
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: var(--azul);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .rainbow-footer {
+            height: 4px;
+            background: linear-gradient(to right, var(--rojo), var(--naranja), var(--amarillo), var(--verde), var(--azul), var(--morado));
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background-color: var(--blanco);
+                flex-direction: column;
+                align-items: center;
+                padding: 1rem 0;
+                transform: translateY(-200%);
+                transition: transform 0.3s;
+                box-shadow: 0 5px 10px var(--sombra);
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .nav-links li {
+                margin: 0.5rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="logo-text">Salud Sexual Inclusiva</span>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#informacion">Información</a></li>
+            <li><a href="#lgbtq">LGBTIQ+</a></li>
+            <li><a href="#telesalud">Telesalud</a></li>
+            <li><a href="#recursos">Recursos</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <button class="hamburger" id="hamburger">☰</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>Salud Sexual y Reproductiva para Todos</h1>
+        <p>Información inclusiva, accesible y profesional para cuidar tu salud sexual y reproductiva, con enfoque especializado en la comunidad LGBTIQ+</p>
+        <div>
+            <a href="#telesalud" class="cta-button">Consulta Online</a>
+            <a href="#informacion" class="cta-button">Aprender Más</a>
+        </div>
+    </section>
+
+    <div class="rainbow-divider"></div>
+
+    <!-- Sección de información general -->
+    <section id="informacion" class="container">
+        <h2 class="section-title">Información sobre Salud Sexual y Reproductiva</h2>
+        <p>La salud sexual y reproductiva es parte integral del bienestar físico, emocional y social de todas las personas. Nuestro objetivo es proporcionar información precisa, inclusiva y libre de prejuicios para que puedas tomar decisiones informadas sobre tu cuerpo y tu salud.</p>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/320" alt="Educación Sexual">
+                </div>
+                <div class="card-content">
+                    <h3>Educación Sexual Integral</h3>
+                    <p>Información adaptada a todas las edades sobre relaciones, consentimiento, anatomía, métodos anticonceptivos y prevención de ITS.</p>
+                    <a href="#" class="read-more">Leer más</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/320" alt="Métodos Anticonceptivos">
+                </div>
+                <div class="card-content">
+                    <h3>Métodos Anticonceptivos</h3>
+                    <p>Conoce las diferentes opciones disponibles, su efectividad, ventajas y consideraciones para elegir el método más adecuado para ti.</p>
+                    <a href="#" class="read-more">Leer más</a>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-img">
+                    <img src="/api/placeholder/400/320" alt="Prevención de ITS">
+                </div>
+                <div class="card-content">
+                    <h3>Prevención de ITS</h3>
+                    <p>Información sobre las infecciones de transmisión sexual más comunes, métodos de prevención, pruebas y tratamientos disponibles.</p>
+                    <a href="#" class="read-more">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección LGBTIQ+ -->
+    <section id="lgbtq" class="lgbtq-section">
+        <div class="container">
+            <h2 class="section-title">Salud Sexual LGBTIQ+</h2>
+            
+            <div class="lgbtq-container">
+                <div class="lgbtq-text">
+                    <p>En nuestra plataforma reconocemos las necesidades específicas de salud sexual y reproductiva de la comunidad LGBTIQ+. Trabajamos para proporcionar información inclusiva, respetuosa y científicamente rigurosa que aborde las particularidades de cada persona, independientemente de su orientación sexual o identidad de género.</p>
+                    <p>Nuestro equipo de profesionales está capacitado específicamente en atención a la diversidad, garantizando un espacio seguro y libre de discriminación para todas las consultas relacionadas con tu salud.</p>
+                </div>
+                
+                <div class="lgbtq-tabs">
+                    <div class="tab-buttons">
+                        <button class="tab-button active" data-tab="tab1">Personas Trans</button>
+                        <button class="tab-button" data-tab="tab2">Personas Lesbianas</button>
+                        <button class="tab-button" data-tab="tab3">Personas Gay</button>
+                        <button class="tab-button" data-tab="tab4">Personas Bisexuales</button>
+                    </div>
+                    
+                    <div id="tab1" class="tab-content active">
+                        <h3>Salud para personas Trans</h3>
+                        <ul>
+                            <li>Información sobre procesos de afirmación de género</li>
+                            <li>Cuidados específicos pre y post cirugías</li>
+                            <li>Terapias hormonales y seguimiento</li>
+                            <li>Salud mental y redes de apoyo</li>
+                            <li>Derechos en el sistema de salud</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="tab2" class="tab-content">
+                        <h3>Salud para personas Lesbianas</h3>
+                        <ul>
+                            <li>Prácticas sexuales seguras entre mujeres</li>
+                            <li>Métodos de barrera adaptados</li>
+                            <li>Prevención de ITS</li>
+                            <li>Salud mamaria y ginecológica</li>
+                            <li>Opciones reproductivas</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="tab3" class="tab-content">
+                        <h3>Salud para personas Gay</h3>
+                        <ul>
+                            <li>Prácticas sexuales seguras</li>
+                            <li>PrEP y PEP para prevención de VIH</li>
+                            <li>Salud anal y prevención de ITS</li>
+                            <li>Detección temprana de cáncer</li>
+                            <li>Salud mental y bienestar emocional</li>
+                        </ul>
+                    </div>
+                    
+                    <div id="tab4" class="tab-content">
+                        <h3>Salud para personas Bisexuales</h3>
+                        <ul>
+                            <li>Salud sexual con múltiples géneros</li>
+                            <li>Prevención de ITS adaptada</li>
+                            <li>Salud mental y bifobia internalizada</li>
+                            <li>Acceso inclusivo a servicios de salud</li>
+                            <li>Opciones reproductivas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Telesalud -->
+    <section id="telesalud" class="telesalud-section">
+        <div class="container">
+            <h2 class="section-title">Servicios de Telesalud</h2>
+            
+            <div class="telesalud-content">
+                <div class="telesalud-img">
+                    <img src="/api/placeholder/400/320" alt="Telesalud">
+                </div>
+                
+                <div class="telesalud-text">
+                    <h3>Consultas online con profesionales especializados</h3>
+                    <p>Ofrecemos consultas virtuales con profesionales de la salud especializados en salud sexual y reproductiva, con formación específica en atención a la comunidad LGBTIQ+. Nuestro equipo médico garantiza un espacio confidencial, respetuoso y libre de prejuicios para todas tus consultas.</p>
+                    
+                    <div class="telesalud-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div>Regístrate en nuestra plataforma con tus datos básicos</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div>Selecciona el tipo de consulta y profesional especializado</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div>Elige fecha y hora disponible según tu conveniencia</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div>Realiza el pago (contamos con opciones accesibles y subsidios)</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <div>Conéctate a tu consulta virtual privada y segura</div>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button" style="margin-top: 1.5rem;">Programar Consulta</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Recursos -->
+    <section id="recursos" class="recursos-section">
+        <div class="container">
+            <h2 class="section-title">Recursos y Materiales</h2>
+            
+            <div class="recursos-container">
+                <div class="recurso-card">
+                    <div class="recurso-icon">📚</div>
+                    <h3>Guías Educativas</h3>
+                    <p>Materiales descargables sobre salud sexual, métodos anticonceptivos y prevención de ITS adaptados a diferentes identidades y orientaciones.</p>
+                </div>
+                
+                <div class="recurso-card">
+                    <div class="recurso-icon">🎥</div>
+                    <h3>Videos Informativos</h3>
+                    <p>Contenido audiovisual educativo sobre diversos temas de salud sexual y reproductiva explicados de manera clara y accesible.</p>
+                </div>
+                
+                <div class="recurso-card">
+                    <div class="recurso-icon">📊</div>
+                    <h3>Infografías</h3>
+                    <p>Visualizaciones que sintetizan información clave para facilitar la comprensión de temas complejos de salud sexual.</p>
+                </div>
+                
+                <div class="recurso-card">
+                    <div class="recurso-icon">📝</div>
+                    <h3>Test y Cuestionarios</h3>
+                    <p>Herramientas interactivas para evaluar conocimientos y recibir recomendaciones personalizadas sobre tu salud sexual.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección FAQ -->
+    <section id="faq" class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Preguntas Frecuentes</h2>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Las consultas de telesalud son confidenciales?</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Absolutamente. Todas nuestras consultas están protegidas por el secreto profesional médico y utilizamos plataformas con cifrado de extremo a extremo para garantizar la privacidad de tus datos e información compartida. Ninguna información se comparte con terceros sin tu consentimiento explícito.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Cómo sé qué método anticonceptivo es adecuado para mí?</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>La elección del método anticonceptivo depende de varios factores como tu estilo de vida, preferencias personales, condiciones médicas y planes reproductivos. Nuestros profesionales pueden ayudarte a evaluar todas las opciones disponibles y encontrar la que mejor se adapte a tus necesidades específicas. También ofrecemos asesoramiento sobre métodos de barrera para distintas prácticas sexuales.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Ofrecen servicios para personas sin seguro médico?</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Sí, contamos con opciones accesibles y un programa de consultas subsidiadas para personas sin seguro médico o con recursos limitados. Nuestro objetivo es que todas las personas, independientemente de su situación económica, puedan acceder a atención de calidad en salud sexual y reproductiva.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Qué debo hacer si creo que tengo una ITS?</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Si sospechas que puedes tener una infección de transmisión sexual, es importante que consultes con un profesional de la salud lo antes posible. A través de nuestro servicio de telesalud, podemos orientarte sobre los próximos pasos, que generalmente incluyen pruebas diagnósticas y, de ser necesario, tratamiento oportuno. Recuerda que muchas ITS son asintomáticas, por lo que las revisiones regulares son importantes.</p>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>¿Cómo accedo a terapia hormonal para afirmación de género?</h3>
+                        <span class="accordion-icon">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <p>El acceso a terapia hormonal para afirmación de género comienza con una consulta especializada con profesionales formados en atención a personas trans. Nuestro equipo puede orientarte sobre el proceso, realizar las evaluaciones necesarias y elaborar un plan personalizado. Trabajamos bajo un modelo de consentimiento informado que respeta tu autonomía y te proporciona toda la información necesaria para tomar decisiones sobre tu proceso.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contacto-section">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            
+            <form class="contacto-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre (o nombre elegido)</label>
+                    <input type="text" id="nombre" class="form-control" placeholder="Tu nombre">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" class="form-control" placeholder="tucorreo@ejemplo.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="asunto">Asunto</label>
+                    <input type="text" id="asunto" class="form-control" placeholder="Motivo de contacto">
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensaje">Mensaje</label>
+                    <textarea id="mensaje" class="form-control" placeholder="Escribe tu consulta o comentario"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Enviar mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="rainbow-footer"></div>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Salud Sexual Inclusiva</h3>
+                    <p>Plataforma de educación y telesalud dedicada a la salud sexual y reproductiva con enfoque inclusivo y especializado para la comunidad LGBTIQ+.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">f</a>
+                        <a href="#" class="social-icon">t</a>
+                        <a href="#" class="social-icon">in</a>
+                        <a href="#" class="social-icon">ig</a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#informacion">Información</a></li>
+                        <li><a href="#lgbtq">LGBTIQ+</a></li>
+                        <li><a href="#telesalud">Telesalud</a></li>
+                        <li><a href="#recursos">Recursos</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Consultas médicas</a></li>
+                        <li><a href="#">Asesoramiento psicológico</a></li>
+                        <li><a href="#">Solicitud de exámenes</a></li>
+                        <li><a href="#">Seguimiento de tratamientos</a></li>
+                        <li><a href="#">Talleres educativos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contáctanos</h3>
+                    <ul class="footer-links">
+                        <li>Email: alvarezgamezd@icloud.com</li>
+                        <li>Teléfono: +57 321 217 4175</li>
+                        <li>Horario: Lun-Vie 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Salud Sexual Inclusiva. Todos los derechos reservados.UNAD 2025 </p>
+ <p>REALIZADO POR: DANIEL ALVAREZ G- MATERIA TELESALUD - PROFESIONAL EN SEGURIDAD Y SALUD EN EL TRABAJO</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navegación móvil
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Navegación smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (this.getAttribute('href') && this.getAttribute('href').length > 1) {
+                    behavior: 'smooth'
+                });
+                
+                // Cerrar menú móvil si está abierto
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+        });
+        
+        // Tabs en sección LGBTIQ+
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabId = button.getAttribute('data-tab');
+                
+                // Desactivar todos los tabs
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                // Activar el tab seleccionado
+                button.classList.add('active');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
+        // Accordion en FAQ
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const accordionContent = header.nextElementSibling;
+                const accordionIcon = header.querySelector('.accordion-icon');
+                
+                accordionContent.classList.toggle('active');
+                
+                if (accordionContent.classList.contains('active')) {
+                    accordionIcon.textContent = '-';
+                } else {
+                    accordionIcon.textContent = '+';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
