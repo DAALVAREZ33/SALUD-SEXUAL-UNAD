@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud Sexual y Reproductiva - Enfoque LGBTIQ+</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Variables de colores de la bandera LGBTIQ+ */
+        :root {
+            --rojo: #e40303;
+            --naranja: #ff8c00;
+            --amarillo: #ffed00;
+            --verde: #008026;
+            --azul: #004dff;
+            --violeta: #750787;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Barra de navegación */
+        header {
+            background: linear-gradient(90deg, var(--rojo), var(--naranja), var(--amarillo), var(--verde), var(--azul), var(--violeta));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 1rem;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Sección principal */
+        .hero {
+            background: url('/api/placeholder/800/400') center/cover;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--azul);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--violeta);
+            transform: translateY(-3px);
+        }
+
+        /* Secciones de contenido */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 3rem;
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: var(--violeta);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--amarillo);
+            padding-bottom: 0.5rem;
+        }
+
+        .info-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-card h3 {
+            color: var(--verde);
+            margin-bottom: 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Videos y recursos */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .resource-link {
+            background-color: #f0f0f0;
+            padding: 0.8rem 1.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            color: var(--azul);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .resource-link i {
+            margin-right: 8px;
+        }
+
+        .resource-link:hover {
+            background-color: var(--azul);
+            color: white;
+        }
+
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        table th, table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: var(--naranja);
+            color: white;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Sección de mitos y verdades */
+        .myth-fact {
+            border-left: 4px solid var(--rojo);
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .myth {
+            color: var(--rojo);
+            font-weight: bold;
+        }
+
+        .fact {
+            color: var(--verde);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(90deg, var(--rojo), var(--naranja), var(--amarillo), var(--verde), var(--azul), var(--violeta));
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .footer-section {
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-section p, .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+            display: block;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Sección de contacto */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-info a {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Salud Sexual LGBTIQ+</div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#salud-sexual">Salud Sexual</a></li>
+                <li><a href="#its">ITS</a></li>
+                <li><a href="#anticonceptivos">Anticonceptivos</a></li>
+                <li><a href="#homosexuales">Salud Homosexual</a></li>
+                <li><a href="#lesbianas">Salud Lésbica</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <h1>Salud Sexual y Reproductiva Inclusiva</h1>
+            <p>Información educativa para la comunidad con enfoque LGBTIQ+</p>
+            <a href="#salud-sexual" class="btn">Comenzar a aprender</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="salud-sexual">
+            <h2>Salud Sexual y Reproductiva</h2>
+            <div class="grid">
+                <div class="info-card">
+                    <h3>¿Qué es la salud sexual?</h3>
+                    <p>La salud sexual es un estado de bienestar físico, mental y social en relación con la sexualidad. Requiere un enfoque positivo y respetuoso de la sexualidad y las relaciones sexuales, así como la posibilidad de tener experiencias sexuales placenteras y seguras, libres de coerción, discriminación y violencia.</p>
+                    <p>Para todas las personas, independientemente de su orientación sexual o identidad de género, la salud sexual implica:</p>
+                    <ul>
+                        <li>Acceso a información precisa</li>
+                        <li>Capacidad para tomar decisiones libres e informadas</li>
+                        <li>Respeto a la integridad corporal</li>
+                        <li>Relaciones consensuadas y mutuamente respetuosas</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Importancia de la salud reproductiva</h3>
+                    <p>La salud reproductiva aborda los procesos, funciones y sistemas reproductivos en todas las etapas de la vida. Implica que las personas puedan tener una vida sexual satisfactoria y segura, y que tengan la capacidad de reproducirse y la libertad para decidir si quieren hacerlo, cuándo y con qué frecuencia.</p>
+                    <p>En el contexto LGBTIQ+, la salud reproductiva también incluye:</p>
+                    <ul>
+                        <li>Opciones de planificación familiar inclusivas</li>
+                        <li>Atención a necesidades específicas según la identidad de género</li>
+                        <li>Acceso a servicios de reproducción asistida</li>
+                        <li>Información sobre opciones de parentalidad</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Consentimiento y comunicación</h3>
+                    <p>El consentimiento es un acuerdo voluntario, específico e informado para participar en una actividad sexual. Es fundamental para todas las relaciones sexuales saludables y debe ser:</p>
+                    <ul>
+                        <li><strong>Libre y voluntario:</strong> Sin presión, manipulación o bajo efectos de sustancias</li>
+                        <li><strong>Reversible:</strong> Puede ser retirado en cualquier momento</li>
+                        <li><strong>Informado:</strong> Todas las partes comprenden lo que implica</li>
+                        <li><strong>Entusiasta:</strong> Todos los participantes desean realmente participar</li>
+                        <li><strong>Específico:</strong> Para cada actividad particular</li>
+                    </ul>
+                    <p>La comunicación clara sobre deseos, límites y expectativas contribuye a experiencias sexuales más satisfactorias y seguras.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="its">
+            <h2>Infecciones de Transmisión Sexual (ITS)</h2>
+            <div class="info-card">
+                <h3>¿Qué son las ITS?</h3>
+                <p>Las infecciones de transmisión sexual (ITS) son infecciones que se transmiten principalmente a través del contacto sexual, incluyendo el sexo vaginal, anal y oral. Afectan a personas de todas las orientaciones sexuales e identidades de género.</p>
+                <p>Es importante entender que las ITS no discriminan y que cualquier persona sexualmente activa puede contraerlas. Sin embargo, algunas prácticas pueden conllevar diferentes niveles de riesgo.</p>
+            </div>
+
+            <h3>Principales ITS y sus síntomas</h3>
+            <table>
+                <tr>
+                    <th>ITS</th>
+                    <th>Síntomas comunes</th>
+                    <th>Tratamiento</th>
+                    <th>Prevención</th>
+                </tr>
+                <tr>
+                    <td>VIH</td>
+                    <td>Puede ser asintomático inicialmente. Síntomas similares a la gripe, fatiga, pérdida de peso, sudores nocturnos.</td>
+                    <td>No tiene cura, pero el tratamiento antirretroviral controla eficazmente el virus y previene la transmisión.</td>
+                    <td>Uso de condones, PrEP, tratamiento como prevención (indetectable = intransmisible).</td>
+                </tr>
+                <tr>
+                    <td>Clamidia</td>
+                    <td>A menudo asintomática. Puede causar secreción anormal, ardor al orinar, dolor pélvico o testicular.</td>
+                    <td>Antibióticos</td>
+                    <td>Uso de condones, barreras de látex para sexo oral.</td>
+                </tr>
+                <tr>
+                    <td>Gonorrea</td>
+                    <td>Secreción, dolor al orinar, dolor de garganta (infección faríngea), secreción rectal.</td>
+                    <td>Antibióticos</td>
+                    <td>Uso de condones, barreras de látex para sexo oral.</td>
+                </tr>
+                <tr>
+                    <td>Sífilis</td>
+                    <td>Úlceras indoloras, erupciones cutáneas, síntomas neurológicos en etapas avanzadas.</td>
+                    <td>Antibióticos (penicilina)</td>
+                    <td>Uso de condones, evitar contacto con úlceras.</td>
+                </tr>
+                <tr>
+                    <td>Herpes</td>
+                    <td>Ampollas dolorosas en genitales, boca o recto; picazón; dolor.</td>
+                    <td>No tiene cura, pero los medicamentos antivirales reducen los síntomas y el riesgo de transmisión.</td>
+                    <td>Uso de condones (aunque no protegen completamente), evitar contacto durante brotes.</td>
+                </tr>
+                <tr>
+                    <td>VPH</td>
+                    <td>A menudo asintomático. Puede causar verrugas genitales o cambios celulares que pueden llevar al cáncer.</td>
+                    <td>Las verrugas pueden tratarse; vigilancia para cambios precancerosos.</td>
+                    <td>Vacunación, uso de condones.</td>
+                </tr>
+            </table>
+
+            <div class="info-card">
+                <h3>Prevención de ITS</h3>
+                <p>La prevención efectiva de ITS incluye:</p>
+                <ul>
+                    <li><strong>Uso de barreras físicas:</strong> Condones externos (masculinos), condones internos (femeninos), barreras de látex para sexo oral</li>
+                    <li><strong>Pruebas regulares:</strong> Detección temprana incluso cuando no hay síntomas</li>
+                    <li><strong>PrEP:</strong> Profilaxis pre-exposición para VIH para personas con alto riesgo</li>
+                    <li><strong>Vacunación:</strong> Para VPH y Hepatitis B</li>
+                    <li><strong>Comunicación:</strong> Hablar abiertamente con parejas sobre salud sexual e historial de ITS</li>
+                    <li><strong>Reducción de riesgos:</strong> Conocer los niveles de riesgo de diferentes prácticas sexuales</li>
+                </ul>
+            </div>
+
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/njItptCHKTg" title="¿Qué son las ITS y cómo prevenirlas?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="anticonceptivos">
+            <h2>Métodos Anticonceptivos</h2>
+            <div class="grid">
+                <div class="info-card">
+                    <h3>Condones externos (masculinos)</h3>
+                    <p>Son fundas delgadas, generalmente de látex, que cubren el pene erecto durante las relaciones sexuales para prevenir embarazos y reducir el riesgo de ITS.</p>
+                    <p><strong>Eficacia:</strong> 87% con uso típico, 98% con uso perfecto</p>
+                    <p><strong>Ventajas:</strong> Protege contra ITS, fácil de conseguir, sin hormonas</p>
+                    <p><strong>Desventajas:</strong> Puede reducir sensibilidad, requiere colocación correcta</p>
+                </div>
+                <div class="info-card">
+                    <h3>Condones internos (femeninos)</h3>
+                    <p>Son fundas que se insertan en la vagina o el ano como barrera. Cubren parcialmente los genitales externos.</p>
+                    <p><strong>Eficacia:</strong> 79% con uso típico, 95% con uso perfecto</p>
+                    <p><strong>Ventajas:</strong> Protege contra ITS, puede colocarse hasta 8 horas antes</p>
+                    <p><strong>Desventajas:</strong> Más caros, menos disponibles</p>
+                </div>
+                <div class="info-card">
+                    <h3>Métodos hormonales</h3>
+                    <p>Incluyen píldoras, parches, anillos vaginales e inyecciones que utilizan hormonas para prevenir el embarazo.</p>
+                    <p><strong>Eficacia:</strong> 91-99% dependiendo del método</p>
+                    <p><strong>Ventajas:</strong> Alta eficacia, pueden regular ciclos menstruales</p>
+                    <p><strong>Desventajas:</strong> No protegen contra ITS, pueden tener efectos secundarios</p>
+                </div>
+                <div class="info-card">
+                    <h3>Dispositivos Intrauterinos (DIUs)</h3>
+                    <p>Pequeños dispositivos que se colocan en el útero para prevenir el embarazo. Pueden ser hormonales o de cobre.</p>
+                    <p><strong>Eficacia:</strong> Más del 99%</p>
+                    <p><strong>Ventajas:</strong> Larga duración (3-10 años), muy eficaces</p>
+                    <p><strong>Desventajas:</strong> No protegen contra ITS, inserción por profesional médico</p>
+                </div>
+            </div>
+            <div class="info-card">
+                <h3>Consideraciones para personas LGBTIQ+</h3>
+                <p>Independientemente de la orientación sexual o identidad de género, es importante considerar:</p>
+                <ul>
+                    <li>Las personas con capacidad de embarazo pero que no tienen relaciones con personas con pene pueden igualmente necesitar anticonceptivos para regular ciclos o tratar condiciones médicas</li>
+                    <li>Las personas trans que toman hormonas pueden necesitar asesoramiento específico sobre anticoncepción, ya que las terapias hormonales no garantizan la imposibilidad de embarazo</li>
+                    <li>La anticoncepción de emergencia debe ser accesible para todas las personas que la necesiten</li>
+                    <li>El uso de condones y barreras de látex sigue siendo importante para prevenir ITS independientemente del riesgo de embarazo</li>
+                </ul>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/iDedv27xnPk" title="Métodos anticonceptivos" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="homosexuales">
+            <h2>Salud Sexual para Hombres Homosexuales y Bisexuales</h2>
+            <div class="grid">
+                <div class="info-card">
+                    <h3>Aspectos importantes de salud sexual</h3>
+                    <p>Los hombres que tienen sexo con hombres deben prestar especial atención a:</p>
+                    <ul>
+                        <li><strong>Pruebas regulares de VIH e ITS:</strong> Se recomienda al menos cada 3-6 meses si hay múltiples parejas</li>
+                        <li><strong>PrEP (Profilaxis Pre-Exposición):</strong> Medicamento diario que reduce significativamente el riesgo de contraer VIH</li>
+                        <li><strong>PEP (Profilaxis Post-Exposición):</strong> Tratamiento de emergencia que debe iniciarse dentro de las 72 horas después de una posible exposición al VIH</li>
+                        <li><strong>Salud anal:</strong> Exámenes regulares para detectar VPH y posibles lesiones precancerosas</li>
+                        <li><strong>Uso correcto del condón:</strong> Para sexo anal y oral</li>
+                        <li><strong>Vacunación:</strong> Contra VPH, Hepatitis A y B</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Uso correcto del condón</h3>
+                    <p>Para maximizar la protección durante el sexo anal:</p>
+                    <ol>
+                        <li>Verificar la fecha de caducidad y que el empaque esté intacto</li>
+                        <li>Abrir el empaque con cuidado, sin usar dientes ni objetos afilados</li>
+                        <li>Asegurarse de que el condón está en la dirección correcta para desenrollarlo</li>
+                        <li>Presionar la punta para eliminar el aire</li>
+                        <li>Desenrollar sobre el pene erecto hasta la base</li>
+                        <li>Usar lubricante a base de agua o silicona (nunca aceites con condones de látex)</li>
+                        <li>Después de la eyaculación, sujetar el condón por la base al retirar el pene</li>
+                        <li>Desechar en la basura, no en el inodoro</li>
+                    </ol>
+                    <p><strong>Importante:</strong> Usar suficiente lubricante reduce el riesgo de que el condón se rompa durante el sexo anal.</p>
+                </div>
+            </div>
+
+            <h3>Mitos y verdades sobre la salud sexual de hombres homosexuales</h3>
+            <div class="myth-fact">
+                <p class="myth">MITO: "El VIH solo afecta a hombres homosexuales."</p>
+                <p class="fact">VERDAD: El VIH puede afectar a cualquier persona independientemente de su orientación sexual. Aunque históricamente ha tenido mayor prevalencia en hombres que tienen sexo con hombres, esto se debe a factores biológicos (mayor riesgo en sexo anal receptivo) y sociales, no a la orientación sexual en sí.</p>
+            </div>
+            <div class="myth-fact">
+                <p class="myth">MITO: "No es necesario usar condón para sexo oral."</p>
+                <p class="fact">VERDAD: Aunque el riesgo es menor que en el sexo anal o vaginal, muchas ITS pueden transmitirse a través del sexo oral, incluyendo gonorrea, sífilis, clamidia y herpes.</p>
+            </div>
+            <div class="myth-fact">
+                <p class="myth">MITO: "Si ambos somos VIH positivos, no necesitamos usar condón."</p>
+                <p class="fact">VERDAD: Existe el riesgo de superinfección con diferentes cepas de VIH, algunas potencialmente resistentes a medicamentos. Además, hay riesgo de transmisión de otras ITS.</p>
+            </div>
+            <div class="myth-fact">
+                <p class="myth">MITO: "La PrEP protege contra todas las ITS."</p>
+                <p class="fact">VERDAD: La PrEP solo protege contra el VIH, no contra otras ITS como gonorrea, clamidia, sífilis o hepatitis.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Signos y síntomas de alarma</h3>
+                <p>Busca atención médica si presentas:</p>
+                <ul>
+                    <li>Secreción inusual del pene o ano</li>
+                    <li>Ardor o dolor al orinar</li>
+                    <li>Úlceras, verrugas o ampollas en genitales, ano o boca</li>
+                    <li>Dolor, inflamación o sangrado rectal</li>
+                    <li>Dolor durante las relaciones sexuales</li>
+                    <li>Dolor testicular o en la ingle</li>
+                    <li>Erupciones en el cuerpo, especialmente en palmas y plantas</li>
+                </ul>
+                <p><strong>Recuerda:</strong> Muchas ITS pueden ser asintomáticas. Las pruebas regulares son esenciales para una detección temprana.</p>
+            </div>
+
+            <div class="video-container">
+                <iframe width="560" height="315"src="https://www.youtube.com/embed/7tJeEKFFyTg" title="Salud sexual para hombres homosexuales" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="lesbianas">
+            <h2>Salud Sexual para Mujeres Lesbianas y Bisexuales</h2>
+            <div class="grid">
+                <div class="info-card">
+                    <h3>Aspectos importantes de salud sexual</h3>
+                    <p>Las mujeres que tienen sexo con mujeres deben considerar:</p>
+                    <ul>
+                        <li><strong>Pruebas regulares de ITS:</strong> Aunque el riesgo es menor para algunas ITS, sigue siendo importante realizarse pruebas periódicamente</li>
+                        <li><strong>Exámenes ginecológicos rutinarios:</strong> Incluidas pruebas de Papanicolaou para detectar VPH</li>
+                        <li><strong>Salud mamaria:</strong> Autoexámenes y mamografías según la edad recomendada</li>
+                        <li><strong>Uso de barreras de protección:</strong> Barreras de látex o condones cortados para sexo oral, guantes para contacto manual</li>
+                        <li><strong>Higiene de juguetes sexuales:</strong> Limpieza adecuada o uso de condones en juguetes compartidos</li>
+                        <li><strong>Vacunación:</strong> Contra VPH y Hepatitis A y B</li>
+                    
+      
+    </script>
+          <main class="container mx-auto mt-8 p-4">
+        <section class="mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Información sobre Salud Sexual</h2>
+            <p class="text-gray-700 mb-4">
+                La salud sexual es un aspecto fundamental del bienestar general.  Implica la posibilidad de tener experiencias sexuales placenteras, seguras y libres de coerción, discriminación y violencia. Es importante informarse y tomar decisiones responsables sobre nuestra salud sexual.
+            </p>
+            <ul class="list-disc list-inside text-gray-700">
+                <li>Conoce tu cuerpo y tus derechos.</li>
+                <li>Busca información confiable y basada en evidencia.</li>
+                <li>Comunica tus necesidades y deseos a tu pareja o parejas.</li>
+                <li>Practica sexo seguro para prevenir infecciones de transmisión sexual (ITS).</li>
+                <li>Utiliza métodos anticonceptivos para evitar embarazos no deseados (si aplica).</li>
+            </ul>
+        </section>
+
+        <section class="mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Infecciones de Transmisión Sexual (ITS)</h2>
+            <p class="text-gray-700 mb-4">
+                Las ITS son infecciones que se transmiten de una persona a otra a través del contacto sexual. Algunas ITS son curables, mientras que otras son crónicas pero manejables. Es importante hacerse pruebas regularmente y recibir tratamiento si es necesario.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-green-500 mb-2">Clamidiasis</h3>
+                    <p class="text-gray-700">Síntomas: Secreción, dolor al orinar.  Puede ser asintomática.</p>
+                    <p class="text-gray-700">Tratamiento: Antibióticos.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-green-500 mb-2">Gonorrea</h3>
+                    <p class="text-gray-700">Síntomas: Secreción, dolor al orinar. Puede causar complicaciones graves.</p>
+                    <p class="text-gray-700">Tratamiento: Antibióticos.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-red-500 mb-2">VIH/SIDA</h3>
+                    <p class="text-gray-700">Síntomas: Inicialmente similares a la gripe.  A largo plazo, afecta el sistema inmune.</p>
+                    <p class="text-gray-700">Tratamiento: Antirretrovirales.  No tiene cura, pero es manejable.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-red-500 mb-2">Herpes Genital</h3>
+                    <p class="text-gray-700">Síntomas: Ampollas dolorosas en los genitales.  Puede haber brotes recurrentes.</p>
+                    <p class="text-gray-700">Tratamiento: Antivirales.  No tiene cura.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-yellow-500 mb-2">Sífilis</h3>
+                    <p class="text-gray-700">Síntomas: Varían en etapas.  Puede causar complicaciones graves si no se trata.</p>
+                    <p class="text-gray-700">Tratamiento: Penicilina.</p>
+                </div>
+                 <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-yellow-500 mb-2">VPH (Virus del Papiloma Humano)</h3>
+                    <p class="text-gray-700">Síntomas: Verrugas genitales.  Puede causar cáncer cervical.</p>
+                    <p class="text-gray-700">Tratamiento: Vacunas y tratamientos para las verrugas.  El virus no tiene cura.</p>
+                </div>
+            </div>
+            <p class="text-gray-700">
+                La prevención es clave. Usa condones de látex o poliuretano y hazte pruebas regularmente si tienes actividad sexual.
+            </p>
+             <div class="flex justify-center mt-4">
+                <a href="https://www.youtube.com/watch?v=R9ovaxmQvj8" target="_blank" rel="noopener noreferrer" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                    <i class="fab fa-youtube mr-2"></i> Video sobre ITS
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Métodos Anticonceptivos</h2>
+            <p class="text-gray-700 mb-4">
+                Existen diversas opciones para prevenir embarazos no deseados. La elección del método anticonceptivo depende de las necesidades y preferencias de cada persona.  Es importante consultar con un profesional de la salud para recibir asesoramiento personalizado.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-purple-500 mb-2">Preservativos (Condones)</h3>
+                    <p class="text-gray-700">Eficacia: Alta.  Protegen contra ITS.</p>
+                    <p class="text-gray-700">Disponibilidad: Fáciles de conseguir.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-purple-500 mb-2">Píldoras Anticonceptivas</h3>
+                    <p class="text-gray-700">Eficacia: Alta. Requieren receta médica y toma diaria.</p>
+                    <p class="text-gray-700">Beneficios: Regulan el ciclo menstrual, reducen el acné.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-purple-500 mb-2">DIU (Dispositivo Intrauterino)</h3>
+                    <p class="text-gray-700">Eficacia: Muy alta.  De larga duración.</p>
+                    <p class="text-gray-700">Tipos: Hormonal (Mirena) y de cobre.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-purple-500 mb-2">Inyecciones Anticonceptivas</h3>
+                    <p class="text-gray-700">Eficacia: Alta.  Se administran cada mes o cada tres meses.</p>
+                    <p class="text-gray-700">Requieren supervisión médica.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-purple-500 mb-2">Implante Subdérmico</h3>
+                    <p class="text-gray-700">Eficacia: Muy alta.  Dura varios años.</p>
+                    <p class="text-gray-700">Se inserta debajo de la piel del brazo.</p>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                    <h3 class="text-lg font-semibold text-purple-500 mb-2">Anticoncepción de Emergencia</h3>
+                    <p class="text-gray-700">Eficacia: Reduce el riesgo de embarazo después de una relación sexual sin protección.</p>
+                    <p class="text-gray-700">No es un método anticonceptivo regular.</p>
+                </div>
+            </div>
+            <p class="text-gray-700">
+                Infórmate sobre las opciones disponibles y elige el método que mejor se adapte a ti.
+            </p>
+             <div class="flex justify-center mt-4">
+                <a href="https://www.youtube.com/watch?v=mZ9v4ooR7T4" target="_blank" rel="noopener noreferrer" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                    <i class="fab fa-youtube mr-2"></i> Video sobre Anticonceptivos
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Salud Sexual para Homosexuales y Lesbianas</h2>
+            <p class="text-gray-700 mb-4">
+                La salud sexual es importante para todas las personas, independientemente de su orientación sexual.  Las personas homosexuales y lesbianas tienen necesidades y consideraciones específicas en cuanto a su salud sexual.
+            </p>
+
+            <h3 class="text-xl font-semibold text-indigo-500 mb-2">Mitos y Verdades</h3>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li><span class="font-semibold">Mito:</span> Las lesbianas no necesitan preocuparse por las ITS. <span class="font-semibold">Verdad:</span> Las ITS pueden transmitirse entre mujeres.</li>
+                <li><span class="font-semibold">Mito:</span> Los hombres homosexuales siempre saben todo sobre sexo seguro. <span class="font-semibold">Verdad:</span> La educación sexual es importante para todos.</li>
+                <li><span class="font-semibold">Mito:</span>  Las personas homosexuales no pueden tener hijos. <span class="font-semibold">Verdad:</span> Existen opciones como la inseminación artificial y la adopción.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-indigo-500 mb-2">Aspectos Importantes de la Salud Sexual</h3>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li>Comunicación abierta y honesta con la pareja o parejas.</li>
+                <li>Uso de condones (externos o internos) y otros métodos de barrera para prevenir ITS.</li>
+                 <li>Informarse sobre el uso del condón femenino.</li>
+                <li>Prácticas sexuales seguras y consensuadas.</li>
+                <li>Atención a la salud mental y emocional.</li>
+                <li>Acceso a servicios de salud amigables y no discriminatorios.</li>
+            </ul>
+
+            <h3 class="text-xl font-semibold text-indigo-500 mb-2">Condón Femenino</h3>
+             <p class="text-gray-700 mb-4">
+                El condón femenino es un método anticonceptivo y de prevención de ITS que se inserta en la vagina.  Es una opción importante para las mujeres, incluyendo las mujeres lesbianas, que desean tener mayor control sobre su salud sexual.
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li>Proporciona protección contra el embarazo y muchas ITS.</li>
+                <li>Puede ser insertado con anticipación a la relación sexual.</li>
+                <li>Permite a la mujer tener mayor control en la relación sexual.</li>
+            </ul>
+            <div class="flex justify-center mt-4">
+                <a href="https://www.youtube.com/watch?v=v0efbM-g9jE" target="_blank" rel="noopener noreferrer" class="bg-pink-500 hover:bg-pink-700 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                    <i class="fab fa-youtube mr-2"></i> Video sobre Condón Femenino
+                </a>
+            </div>
+
+            <h3 class="text-xl font-semibold text-indigo-500 mb-2">Signos y Síntomas de Alarma</h3>
+            <p class="text-gray-700 mb-4">
+               Es importante estar atentas a cualquier cambio o síntoma inusual en tu cuerpo y buscar atención médica si presentas:
+            </p>
+            <ul class="list-disc list-inside text-gray-700 mb-4">
+                <li>Secreción vaginal o peneana anormal.</li>
+                <li>Dolor o ardor al orinar o durante las relaciones sexuales.</li>
+                <li>Llagas, ampollas o verrugas en los genitales o la boca.</li>
+                <li>Sangrado entre periodos menstruales o después de las relaciones sexuales.</li>
+                <li>Dolor pélvico o abdominal.</li>
+                <li>Fiebre, fatiga o ganglios inflamados.</li>
+            </ul>
+            <p class="text-gray-700">
+                No ignores estos síntomas.  La detección temprana y el tratamiento oportuno son fundamentales para prevenir complicaciones y proteger tu salud a largo plazo.
+            </p>
+             <div class="flex justify-center mt-4">
+                <a href="https://www.youtube.com/watch?v=HCBWrxWv9Zg" target="_blank" rel="noopener noreferrer" class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full flex items-center">
+                    <i class="fab fa-youtube mr-2"></i> Video sobre Salud Sexual Lésbica
+                </a>
+            </div>
+        </section>
+
+        <section class="mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-2xl font-semibold text-blue-600 mb-4">Enlaces de Interés</h2>
+            <p class="text-gray-700 mb-2">
+                Aquí te proporcionamos algunos enlaces que pueden ser de utilidad para ampliar tu información:
+            </p>
+            <ul class="list-disc list-inside space-y-2">
+                <li><a href="https://www.plannedparenthood.org/es" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 hover:underline">Planned Parenthood</a> - Información completa sobre salud sexual y reproductiva.</li>
+                <li><a href="https://www.cdc.gov/std/spanish/index.htm" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 hover:underline">Centros para el Control y la Prevención de Enfermedades (CDC)</a> - Información sobre ITS.</li>
+                <li><a href="https://www.who.int/es/news-room/fact-sheets/detail/sexuality-and-health" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 hover:underline">Organización Mundial de la Salud (OMS)</a> -  Información sobre sexualidad y salud.</li>
+                 <li><a href="https://espanol.loveisrespect.org/" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-700 hover:underline">Love is respect</a> - Información sobre relaciones saludables (en español).</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-gray-200 text-gray-700 py-4 text-center">
+        <p class="text-sm">CURSO DE TELESALUD - DANIEL ALVAREZ G - PROFESIONAL SST - UNAD CEAD SOGAMOSO</p>
+        <div class="mt-2">
+            <span class="font-semibold">Teléfono:</span> 3212174175 | <span class="font-semibold">Correo:</span> alvarezgamezd@icloud.com
+        </div>
+    </footer>
+
+    <script>
+        // Este script podría incluir funcionalidades adicionales como un chatbot o elementos interactivos.
+        // Por ahora, se deja como marcador de posición.
+        console.log("¡Bienvenido a la página de Telesalud LGBTQIA+!");
+    </script>
+</body>
+</html>
+
+</body>
+</html>
